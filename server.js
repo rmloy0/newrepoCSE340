@@ -25,6 +25,7 @@ app.set("layout", "./layouts/layout")
 app.use(require("./routes/static"))
 
 //Index route
+ 
 
 app.get("/", function (req, res){
   res.render("index", {title: "Home"})
