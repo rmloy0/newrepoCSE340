@@ -1,3 +1,5 @@
+
+
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -5,70 +7,70 @@
   box-sizing: border-box;
 }
 /*section  main body*/
-:root {
-    --primary-background: #fff;
-    --main-accent: #01b0d3;
-    
-    --primary-text: #242333;
-    --heading-font: Literata;
-
-}
+ 
 
 body{
-  background-image:  url('/images/site/small_check.jpg');
-   
-  margin: 0;
- 
-  
+  background-image:  url('/images/site/small_check.jpg');   
+  margin: 0;  
   background-repeat: repeat;
-   --body-font: Inter;
-      
+  font-family:  "Roboto", sans-serif;
+  background-color: #fff; 
+  color: #242333;
+ 
+
    
 }
 main {
   width: 100%;
 }
 
-
-
-
-
- /*section 2*/
+ /*section 2 wrapper*/
 #wrapper {
-   width:1000px;
+   
+    max-width: 1000px;
+    width: 90%;
     margin:40px auto;
-    background:var(--primary-background);
+    background:#fff;
     padding:20px;
     border-radius:10px;
-    border: 5px solid var(--main-accent);
+    border: 5px solid #01b0d3;
+      
 
 }
-
-
-
 
 #top-header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+    
+
    
 }
 
 .siteName {
   font-size: 2.5rem;
   font-weight: 800;
-  border:2px solid var(--primary-text);
   padding:.5rem;
+  font-family: "Roboto Slab", serif;
+ 
 
+ 
 
 }
-    #tools {
+
+.siteName a {
+  text-decoration: none;
+  color: inherit;            
+}
+
+
+#tools {
         font-size: inherit;
         font-variant: small-caps;
          display: flex;
          width: 16%;
    
-    justify-content: space-evenly;
+        justify-content: space-evenly;
     }
 
 
@@ -77,21 +79,27 @@ main {
 
 
 nav {           
-  background-color:var(--primary-text);
-  color:var(--primary-background);
+  background-color: #242333;
+  color: #fff;
+   font-family: "Roboto Slab", serif;
+   font-size: 1.2rem;
  
 }
 
 nav ul {
   display: flex;
+  
    padding:0;
    margin:0;
     justify-content: space-evenly;
+    gap:20px;
 }
 
 nav li {
   list-style: none;
   padding: 1em ;
+  
+  
    
 }
 
@@ -100,60 +108,77 @@ nav li {
 .hero {
                
     display: flex;
-    align-items: center;
-    gap: 30px;
-   
+    align-items: center;   
+    flex-direction: row-reverse;
+    font-family: "Roboto Slab", serif;
+    font-size: larger;
      
     }
 
-.hero > img {
-  
- 
-width: 50%;
+.hero > img { 
+  width: 50%;
   max-width: 520px;
+  height: auto;
  
 
 
 }                
-.hero-info button{
-  background: var(--main-accent);
+.button-hero{
+  background: #01b0d3;
   border:none;
   padding:10px 20px;
   font-weight:bold;
   border-radius:5px;
   cursor:pointer;
+  color: #fff;
 }
 
 .hero-info {
   flex: 1;
+  color: #01b0d3;
+  font-weight: 550;
+ 
 }
 
 
 
 .hero-info h2 {
-  font-family: var(--heading-font);
+
   margin: 0 0 .5rem 0;
+  margin-left: 3%;
 }
 
 
 .hero-info ul {
-  margin: .5rem 0 1rem 1.2rem; /* nice spacing for bullets */
+  margin: .5rem 0 1rem 1.2rem; 
+   list-style: none; 
+   padding: 0;
+
+ 
+}
+
+
+.hero-info ul li {
+  margin-bottom: 8px;
 }
 
 
 
 
+/*container part */
 .container {
  display: grid;
   grid-template-columns: 1fr  1fr;
-  gap: 30px;
- 
+  gap: 30px; 
   padding: 10px;
 }
 
+ 
+ 
+
 
 .item {
-  background: #00a6c7;
+  background: #01b0d3;
   padding: .1em;
   text-align: center;
   border: 2px solid black;
@@ -170,4 +195,24 @@ width: 50%;
 .item a {
   font-size: 18px;
   display: block;
+  color: #0042aa;
+  text-decoration: underline;
 }
+/*review section*/
+.reviews ul {
+    margin-top: 8px;
+    list-style: none;
+    margin: .5rem 0 1rem 1.2rem; 
+     font-family: "Roboto Slab", serif;
+     font-size: large;
+    
+    
+}
+
+.reviews li {
+  margin-top: 8px;
+}
+ 
+
+
+
