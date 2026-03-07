@@ -88,7 +88,7 @@ nav {
 
 nav ul {
   display: flex;
-  
+   flex-wrap: wrap;
    padding:0;
    margin:0;
     justify-content: space-evenly;
@@ -109,9 +109,10 @@ nav li {
                
     display: flex;
     align-items: center;   
-    flex-direction: row-reverse;
+    flex-direction: row;
     font-family: "Roboto Slab", serif;
     font-size: larger;
+    gap:12px;
      
     }
 
@@ -119,6 +120,7 @@ nav li {
   width: 50%;
   max-width: 520px;
   height: auto;
+  order:2;
  
 
 
@@ -134,7 +136,7 @@ nav li {
 }
 
 .hero-info {
-  flex: 1;
+  order:1;
   color: #01b0d3;
   font-weight: 550;
  
