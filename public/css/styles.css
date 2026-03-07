@@ -18,7 +18,7 @@ main {
   width: 100%;
 }
 
-/*section 2 wrapper*/
+/*section wrapper and header */
 #wrapper {
   max-width: 1000px;
   width: 90%;
@@ -59,7 +59,7 @@ main {
   color: inherit;
 }
 
-/*nav part*/
+/*subsection nav part*/
 
 nav {
   background-color: #242333;
