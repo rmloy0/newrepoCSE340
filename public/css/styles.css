@@ -4,7 +4,7 @@
 *:after {
   box-sizing: border-box;
 }
-/*section  main body*/
+/*section  main & body*/
 
 body {
   background-image: url("/images/site/small_check.jpg");
@@ -26,7 +26,7 @@ main {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  border: 5px solid #01b0d3;
+  border: 5px solid #015D6F;
 }
 
 #top-header {
@@ -100,7 +100,7 @@ nav li {
   order: 2;
 }
 .button-hero {
-  background: #01b0d3;
+  background: #015D6F;
   padding: 10px 20px;
   font-weight: bold;
   font-size: large;
@@ -111,8 +111,8 @@ nav li {
 
 .hero-info {
   order: 1;
-  color: #01b0d3;
-  font-weight: 550;
+  color: #015D6F;
+  font-weight: 575;
 }
 
 .hero-info h2 {
@@ -139,7 +139,7 @@ nav li {
 }
 
 .item {
-  background: #01b0d3;
+  background: #015D6F;
   padding: 0;
   text-align: center;
   border: 2px solid black;
@@ -154,7 +154,7 @@ nav li {
 .item a {
   font-size: 18px;
   display: block;
-  color: #0042aa;
+  color: #fff;
   text-decoration: underline;
 }
 /*review section*/
