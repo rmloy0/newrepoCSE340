@@ -20,7 +20,7 @@ main {
 
 /*section wrapper and header */
 #wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   width: 90%;
   margin: 40px auto;
   background: #fff;
@@ -50,7 +50,7 @@ main {
 #tools {
   font-variant: small-caps;
   display: flex;
-  width: 16%;
+ 
 
   justify-content: space-evenly;
 }
@@ -87,6 +87,7 @@ nav li {
 .hero {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   flex-direction: row;
   font-family: "Roboto Slab", serif;
   font-size: larger;
@@ -98,6 +99,7 @@ nav li {
   max-width: 520px;
   height: auto;
   order: 2;
+  margin-inline: auto;
 }
 .button-hero {
   background: #015D6F;
@@ -112,7 +114,8 @@ nav li {
 .hero-info {
   order: 1;
   color: #015D6F;
-  font-weight: 575;
+  font-weight: 600;
+   
 }
 
 .hero-info h2 {
@@ -133,10 +136,18 @@ nav li {
 /*container part */
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
   padding: 10px;
 }
+
+@media (min-width: 1024px){
+  
+  .container{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 
 .item {
   background: #015D6F;
@@ -169,3 +180,8 @@ nav li {
 .reviews li {
   margin-top: 10px;
 }
+
+
+ 
+
+
