@@ -134,9 +134,11 @@ nav li {
 }
 
 /*container part */
+
 .container {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  
+  flex-direction: column;  
   gap: 30px;
   padding: 10px;
 }
@@ -144,8 +146,20 @@ nav li {
 @media (min-width: 1024px){
   
   .container{
-    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    gap: 30px
   }
+}
+
+.reviews {
+
+order: 2;
+flex:1;
+}
+
+
+.container > section {
+  flex: 1;
 }
 
 
@@ -168,17 +182,39 @@ nav li {
   color: #fff;
   text-decoration: underline;
 }
-/*review section*/
+
+
 .reviews ul {
   padding: 0;
-
-  margin: 0.5rem 0 1rem 1.2rem;
+  margin: 3rem 0 1rem 1.2rem;
   font-family: "Roboto Slab", serif;
   font-size: large;
 }
 
 .reviews li {
   margin-top: 10px;
+}
+
+
+.upgrade-items{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);    
+  gap:12px;
+  margin-top: 3rem;
+}
+
+
+ .upgrades {
+  flex:1 ;
+ }
+
+
+ 
+@media (max-width: 1023px) {
+ 
+  .upgrades { 
+    order: 2;
+   }
 }
 
 
