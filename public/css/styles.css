@@ -26,7 +26,7 @@ main {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  border: 5px solid #015D6F;
+  border: 5px solid #015d6f;
 }
 
 #top-header {
@@ -50,7 +50,6 @@ main {
 #tools {
   font-variant: small-caps;
   display: flex;
- 
 
   justify-content: space-evenly;
 }
@@ -102,7 +101,7 @@ nav li {
   margin-inline: auto;
 }
 .button-hero {
-  background: #015D6F;
+  background: #015d6f;
   padding: 10px 20px;
   font-weight: bold;
   font-size: large;
@@ -113,9 +112,8 @@ nav li {
 
 .hero-info {
   order: 1;
-  color: #015D6F;
+  color: #015d6f;
   font-weight: 600;
-   
 }
 
 .hero-info h2 {
@@ -137,34 +135,30 @@ nav li {
 
 .container {
   display: flex;
-  
-  flex-direction: column;  
+
+  flex-direction: column;
   gap: 30px;
   padding: 10px;
 }
 
-@media (min-width: 1024px){
-  
-  .container{
+@media (min-width: 1024px) {
+  .container {
     flex-direction: row;
-    gap: 30px
+    gap: 30px;
   }
 }
 
 .reviews {
-
-order: 2;
-flex:1;
+  order: 2;
+  flex: 1;
 }
-
 
 .container > section {
   flex: 1;
 }
 
-
 .item {
-  background: #015D6F;
+  background: #015d6f;
   padding: 0;
   text-align: center;
   border: 2px solid black;
@@ -183,7 +177,6 @@ flex:1;
   text-decoration: underline;
 }
 
-
 .reviews ul {
   padding: 0;
   margin: 3rem 0 1rem 1.2rem;
@@ -195,29 +188,51 @@ flex:1;
   margin-top: 10px;
 }
 
-
-.upgrade-items{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);    
-  gap:12px;
+.upgrade-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   margin-top: 3rem;
 }
 
-
- .upgrades {
-  flex:1 ;
- }
-
-
- 
-@media (max-width: 1023px) {
- 
-  .upgrades { 
-    order: 2;
-   }
+.upgrades {
+  flex: 1;
 }
 
+@media (max-width: 1023px) {
+  .upgrades {
+    order: 2;
+  }
+}
 
+#inv-display {
+  list-style: none;
  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+}
 
+#inv-display li {
+  text-decoration: underline;
+  box-shadow: 0 4px 10px #464747;
+  border-radius: 10px;
+  border: solid #191b1b;
+}
 
+#inv-display img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.namePrice {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.namePrice hr {
+  margin: 0.5rem auto;
+  border: 0;
+  border-top: 3px solid #1b1a1a;
+}
