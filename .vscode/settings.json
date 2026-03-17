@@ -12,7 +12,7 @@
             "driver": "PostgreSQL",
             "name": "render.com",
             "group": " ",
-            "connectString": "postgresql://demo456:vavvWqDl2EsTVyypp7JgWU35rYGPQB4R@dpg-d6kbv0vpm1nc739knue0-a.oregon-postgres.render.com/demo456_k9iq"
+            "connectString": "postgresql://demo349:rDc9yudbaT5GxzHVrB2t4ytGfF7FO7TH@dpg-d6pk1q7kijhs73ajj4ag-a.oregon-postgres.render.com/demo349_609r"
         }
     ]
 }
