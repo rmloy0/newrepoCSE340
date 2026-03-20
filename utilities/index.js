@@ -57,6 +57,14 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+
+/***
+ * build detail view
+ */
+
+
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
