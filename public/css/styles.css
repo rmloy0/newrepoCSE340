@@ -74,11 +74,17 @@ nav ul {
   margin: 0;
   justify-content: space-evenly;
   gap: 20px;
+  list-style: none;
 }
 
 nav li {
   list-style: none;
   padding: 1em;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 
 /*hero part */
@@ -205,9 +211,10 @@ nav li {
   }
 }
 
+/***section of inventory display*/
 #inv-display {
   list-style: none;
- 
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -235,4 +242,38 @@ nav li {
   margin: 0.5rem auto;
   border: 0;
   border-top: 3px solid #1b1a1a;
+}
+
+/* Car detail Section*/
+
+.vehicle-detail {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.vehicle-detail img.vehicle-image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.vehicle-info {
+  background: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.vehicle-info {
+  background: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 6px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .vehicle-detail {
+    flex-direction: column;
+    align-items: center;
+  }
 }
