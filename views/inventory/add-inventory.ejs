@@ -13,17 +13,17 @@
 
 <div class="form-view">
   <form action="/inv/add-inventory" method="post">
-    <label for="clasificationBuild">Classification</label>
-    <%- clasificationBuild %>
+    <label for="classificationList ">Classification</label>
+    <%- classificationList  %>
 
     <label for="inv_make">Make</label>
-    <input type="text" id="inv_make" name="inv_make" required  minlength="3" placeholder="min characters 3" />
+    <input type="text" id="inv_make" name="inv_make" required  minlength="3" placeholder="min characters 3" value="<%= locals.inv_make %>"/>
 
     <label for="inv_model">Model</label>
-    <input type="text" id="inv_model" name="inv_model" required  minlength="3" placeholder="min characters 3"/>
+    <input type="text" id="inv_model" name="inv_model" required  minlength="3" placeholder="min characters 3" value="<%= locals.inv_model %>"/>
 
     <label for="inv_description">Description</label>
-    <textarea id="inv_description" name="inv_description" required></textarea>
+    <textarea id="inv_description" name="inv_description" required value="<%= locals.inv_description %>"></textarea>
 
     <label for="inv_image">Image Path</label>
     <input type="text" id="inv_image" name="inv_image" required value="/images/vehicles/no-image.png">  
@@ -32,16 +32,16 @@
     <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="/images/vehicles/no-image-tn.png"/>
 
     <label for="inv_price">Price</label>
-    <input type="number" id="inv_price" name="inv_price" required   />
+    <input type="number" id="inv_price" name="inv_price" required  value="<%= locals.inv_price %>" />
 
     <label for="inv_year">Year</label>
-    <input type="number" id="inv_year" name="inv_year" required minlength="4" maxlength="4"/>
+    <input type="number" id="inv_year" name="inv_year" required min="1900" max="2026" value="<%= locals.inv_year %>"/>
 
     <label for="inv_miles">Miles</label>
-    <input type="number" id="inv_miles" name="inv_miles" required />
+    <input type="number" id="inv_miles" name="inv_miles"   step="1" required value="<%= locals.inv_miles %>" />
 
     <label for="inv_color">Color</label>
-    <input type="text" id="inv_color" name="inv_color" required minlength="3" placeholder="color" />
+    <input type="text" id="inv_color" name="inv_color" required minlength="3" placeholder="color" value="<%= locals.inv_color %>" />
 
            <div class="button-container">
  

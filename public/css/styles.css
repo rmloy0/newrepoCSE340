@@ -316,19 +316,13 @@ form input {
  
 .button-container {
   text-align: center;  
-}
-
-.button-login
- {
   
  
- 
-  background-color: #4893da;
   font-weight: bold;
   width: auto; 
-  
 }
 
+ 
 
 input {
   border: 2px solid #ccc;

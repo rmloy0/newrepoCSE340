@@ -22,8 +22,8 @@ router.get("/add-classification", utilities.handleErrors ( invController.buildAd
 
 router.post(
   "/add-classification",
-  regValidate.registrationRules (),
-    regValidate.checkRegData,
+  regValidate.classificationRules (),
+    regValidate.checkRegDataClassification,
   utilities.handleErrors(invController.registerClassification)
 )
 
@@ -34,6 +34,8 @@ router.get("/add-inventory", utilities.handleErrors ( invController.buildInvento
 
 router.post(
   "/add-inventory",
+  regValidate.inventoryRules (),
+    regValidate.checkRegDataAddInventory,
 
   utilities.handleErrors(invController.registerInventory)
 )

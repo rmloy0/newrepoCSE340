@@ -4,9 +4,9 @@ const validate = {};
 const inventoryModel = require("../models/inventory-model");
 
 /*  **********************************
- *  Registration Data Validation Rules
+ *  Registration Data Validation Rules classification 
  * ********************************* */
-validate.registrationRules  = () => {
+validate.classificationRules  = () => {
   return [
    
   
@@ -31,7 +31,7 @@ validate.registrationRules  = () => {
 /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
-validate.checkRegData = async (req, res, next) => {
+validate.checkRegDataClassification = async (req, res, next) => {
   const { classification_name } = req.body;
   let errors = [];
   errors = validationResult(req);
@@ -48,5 +48,97 @@ validate.checkRegData = async (req, res, next) => {
   }
   next();
 };
+
+
+
+/*  **********************************
+ *  Registration Data Validation Rules classification 
+ * ********************************* */
+validate.inventoryRules  = () => {
+ return [
+
+
+ 
+ 
+    body("inv_make")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide valid make car ."), // on error this message is sent.
+
+    // lastname is required and must be string
+    body("inv_model")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide a model"), // on error this message is sent.
+
+     
+   
+body("inv_year")
+      .notEmpty()
+      .withMessage("Year is required.")
+      .isInt({ min: 1900, max: new Date().getFullYear() + 1 })
+      .withMessage("Year must be a valid 4‑digit year."),
+
+ 
+    body("inv_description")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Description is required."),
+
+ 
+
+ 
+    body("inv_price")
+      .notEmpty()
+      .withMessage("Price is required.")
+      .isFloat({ min: 0 })
+      .withMessage("Price must be a valid number."),
+
+ 
+    body("inv_miles")
+      .notEmpty()
+      .withMessage("Miles are required.")
+      .isInt({ min: 0 })
+      .withMessage("Miles must be a positive number."),
+
+   
+    body("inv_color")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Color is required."),
+  ];
+};
+
+
+/* ******************************
+ * Check data and return errors or continue to registration
+ * ***************************** */
+
+validate.checkRegDataAddInventory = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+    const classificationList = await utilities.buildClassificationList(
+      req.body.classification_id
+    );
+
+    return res.render("inventory/add-inventory", {
+      title: "Add Vehicle",
+      nav,
+      classificationList,
+      errors
+    });
+  }
+
+  next();
+};
+
 
 module.exports = validate;

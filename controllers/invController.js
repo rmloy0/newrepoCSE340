@@ -104,12 +104,12 @@ invCont.registerClassification = async function (req, res) {
 
 invCont.buildInventoryview = async function (req, res) {
   const nav = await utilities.getNav();
-  const clasificationBuild = await utilities.buildClassificationList();
+  const classificationList  = await utilities.buildClassificationList();
 
   res.render("./inventory/add-inventory", {
     title: "Add Vehicle",
     nav,
-    clasificationBuild,
+    classificationList ,
     errors: null,
   });
 };
@@ -147,6 +147,7 @@ invCont.registerclassification = async function (req, res) {
 
 invCont.registerInventory = async function (req, res) {
   let nav = await utilities.getNav();
+  const classificationList  = await utilities.buildClassificationList();
   const {
     classification_id,
     inv_make,
@@ -177,17 +178,18 @@ invCont.registerInventory = async function (req, res) {
     inv_color,
     classification_id
   );
-
+ 
 
   if (regResult) {
     req.flash("notice", "Vehicle added successfully.");
     return res.redirect("/inv");
   }
-
+  
   req.flash("notice", "Failed to add vehicle.");
   res.render("inventory/add-inventory", {
     title: "Add Vehicle",
     nav,
+    classificationList ,
     errors: null
   });
 };
