@@ -338,7 +338,7 @@ input {
 
 
 input:required:invalid, input:focus:invalid {
- background-image: url(/images/invalid.png);
+ /* background-image: url(/images/invalid.png); */
  background-position: right top;
  
   border-color: red;
@@ -346,7 +346,7 @@ input:required:invalid, input:focus:invalid {
 }
 
  input:required:valid {
- background-image: url(/images/valid.png);
+ /* background-image: url(/images/valid.png); */
  background-position: right top;
  
   border-color: green;

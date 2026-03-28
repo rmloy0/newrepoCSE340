@@ -45,7 +45,152 @@ invCont.buildDetailView = async function (req, res, next) {
   }
 };
 
-invCont.triggerError = async function (req, res, next) {
-  throw new Error("Intentional 500 error for testing");
+/// funtion to build new classification view  add new classification & add new car then move to form
+
+invCont.buildmanagment = async function (req, res) {
+  const nav = await utilities.getNav();
+  //  req.flash("notice", "This is a flash message.")
+  res.render("./inventory/management", { title: "Vehicle Management", nav });
 };
+
+// add classifcation view
+
+invCont.buildAddClassification = async function (req, res) {
+  const nav = await utilities.getNav();
+
+  res.render("./inventory/add-classification", {
+    title: "Login",
+    nav,
+    errors: null,
+  });
+};
+
+/* ****************************************
+ *  Add classification
+ * *************************************** */
+
+invCont.registerClassification = async function (req, res) {
+  const { classification_name } = req.body;
+  console.log(classification_name);
+  const nav = await utilities.getNav();
+
+  if (!classification_name) {
+    req.flash("notice", "Classification name is required.");
+    return res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      errors: null,
+    });
+  }
+
+  const result = await invModel.registerClassification(classification_name);
+
+  if (result && result.rows && result.rows.length > 0) {
+    req.flash("notice", "Classification added successfully.");
+    return res.redirect("/inv");
+  }
+
+  req.flash("notice", "Sorry, the classification could not be added.");
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+  });
+};
+
+/* ****************************************
+ *  Add inventory
+ * *************************************** */
+
+invCont.buildInventoryview = async function (req, res) {
+  const nav = await utilities.getNav();
+  const clasificationBuild = await utilities.buildClassificationList();
+
+  res.render("./inventory/add-inventory", {
+    title: "Add Vehicle",
+    nav,
+    clasificationBuild,
+    errors: null,
+  });
+};
+
+invCont.registerclassification = async function (req, res) {
+  const { classification_name } = req.body;
+  console.log(classification_name);
+  const nav = await utilities.getNav();
+
+  if (!classification_name) {
+    req.flash("notice", "Classification name is required.");
+    return res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      errors: null,
+    });
+  }
+
+  const result = await invModel.registerClassification(classification_name);
+
+  if (result && result.rows && result.rows.length > 0) {
+    req.flash("notice", "Classification added successfully.");
+    return res.redirect("/inv");
+  }
+
+  req.flash("notice", "Sorry, the classification could not be added.");
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+  });
+};
+
+// registerInventory
+
+invCont.registerInventory = async function (req, res) {
+  let nav = await utilities.getNav();
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+  } = req.body;
+
+ 
+  console.log("POST INVENTORY BODY:", req.body);
+  console.log("classification_id:", classification_id);
+
+
+  const regResult = await invModel.AddInventory(
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id
+  );
+
+
+  if (regResult) {
+    req.flash("notice", "Vehicle added successfully.");
+    return res.redirect("/inv");
+  }
+
+  req.flash("notice", "Failed to add vehicle.");
+  res.render("inventory/add-inventory", {
+    title: "Add Vehicle",
+    nav,
+    errors: null
+  });
+};
+
+
 module.exports = invCont;

@@ -1,0 +1,32 @@
+<h1><%= title %></h1>
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<h1>Add New Classification</h1>
+
+<div class="form-view">
+ 
+
+  <form action="/inv/add-classification" method="post">
+    <label for="classification_name">Classification Name</label>
+    <p class="flag">Name must be alphabetic characters only.</p>
+
+    <input
+      type="text"  id="classification_name"  name="classification_name"  pattern="[A-Za-z]+"
+      required/>
+
+    <button type="submit">Add Classification</button>
+
+          <div class="button-container">
+ 
+      <input type="submit" class="button-submit" value="Submit">
+    </div>
+  
+  </form>
+</div>
