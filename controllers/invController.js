@@ -49,8 +49,8 @@ invCont.buildDetailView = async function (req, res, next) {
 
 invCont.buildmanagment = async function (req, res) {
   const nav = await utilities.getNav();
-  //  req.flash("notice", "This is a flash message.")
-  res.render("./inventory/management", { title: "Vehicle Management", nav });
+ 
+  res.render("./inventory/management", { title: "Vehicle Management", nav, errors: null });
 };
 
 // add classifcation view
@@ -193,6 +193,9 @@ invCont.registerInventory = async function (req, res) {
     errors: null
   });
 };
+
+
+ 
 
 
 module.exports = invCont;
