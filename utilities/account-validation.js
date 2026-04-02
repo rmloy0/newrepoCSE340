@@ -6,7 +6,7 @@ const accountModel = require("../models/account-model");
 /*  **********************************
  *  Registration Data Validation Rules
  * ********************************* */
-validate.registrationRules  = () => {
+validate.registrationRules = () => {
   return [
     // firstname is required and must be string
     body("account_firstname")
@@ -70,6 +70,40 @@ validate.checkRegData = async (req, res, next) => {
       nav,
       account_firstname,
       account_lastname,
+      account_email,
+    });
+    return;
+  }
+  next();
+};
+
+/*  **********************************
+ *  Login Data Validation Rules
+ * ********************************* */
+validate.loginRules = () => {
+  return [
+    body("account_email")
+    .isEmail()
+    .withMessage("A valid email is required."),
+    body("account_password")
+    .notEmpty()
+    .withMessage("Password is required."),
+  ];
+};
+
+/* ******************************
+ * Check data and return errors or continue to registration
+ * ***************************** */
+validate.checkLoginData = async (req, res, next) => {
+  const { account_email, account_password } = req.body;
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/login", {
+      errors,
+      title: "Login",
+      nav,
       account_email,
     });
     return;

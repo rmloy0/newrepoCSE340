@@ -17,6 +17,7 @@ const utilities = require("./utilities");
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * vie Engine and Templates
@@ -49,6 +50,9 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
 /* ***********************
  * Routes
  *************************/
