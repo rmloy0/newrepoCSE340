@@ -12,7 +12,7 @@ router.get("/detail/:inventoryId", invController.buildDetailView);
 router.get("/trigger-error", utilities.handleErrors ( invController.triggerError));
 
 /****adding the / route future colling to invController new classification funtion */
-router.get("/", invController.buildmanagment);
+router.get("/", utilities.CheckAccountTypeAccess, invController.buildmanagment);
 //add classification
 
 router.get("/add-classification", utilities.handleErrors ( invController.buildAddClassification));

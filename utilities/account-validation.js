@@ -95,6 +95,12 @@ validate.loginRules = () => {
  * Check data and return errors or continue to registration
  * ***************************** */
 validate.checkLoginData = async (req, res, next) => {
+
+  
+if (!req.body) {
+    return next();
+  }
+
   const { account_email, account_password } = req.body;
   let errors = [];
   errors = validationResult(req);

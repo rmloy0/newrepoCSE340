@@ -150,11 +150,13 @@ Util.checkJWTToken = (req, res, next) => {
    req.cookies.jwt,
    process.env.ACCESS_TOKEN_SECRET,
    function (err, accountData) {
+      
     if (err) {
      req.flash("Please log in")
      res.clearCookie("jwt")
      return res.redirect("/account/login")
     }
+   
     res.locals.accountData = accountData
     res.locals.loggedin = 1
     next()
@@ -177,4 +179,26 @@ Util.checkJWTToken = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+
+
+ /***************
+  * check access based on account type
+  */
+
+
+ Util.CheckAccountTypeAccess = (req, res, next) => {
+  if (res.locals.loggedin && (
+    res.locals.accountData.account_type === "Employee" ||
+      res.locals.accountData.account_type === "Admin"
+
+  )) {
+   return next ()
+  
+ }   {
+  req.flash ("notice", "you do not have access")
+  return res.redirect ("/account/login")
+
+}
+ }
+
 module.exports = Util;

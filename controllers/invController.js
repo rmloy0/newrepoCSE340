@@ -322,7 +322,7 @@ invCont.deleteInventoryView = async function (req, res, next) {
    const itemName = `${itemData.inv_make} ${itemData.inv_model}`
  
   res.render("./inventory/delete-confirm", {
-    title: "Edit " + itemName,
+    title: "Delete " + itemName,
     nav,
 
     errors: null,

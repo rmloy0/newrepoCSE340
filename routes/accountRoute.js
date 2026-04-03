@@ -37,7 +37,7 @@ router.post(
 
  
  
-router.get("/", utilities.checkJWTToken, utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 
 
 

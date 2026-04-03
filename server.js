@@ -40,6 +40,7 @@ app.set("layout", "./layouts/layout");
   name: 'sessionId',
 }))
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -51,12 +52,28 @@ app.use(function(req, res, next){
 })
 
 app.use(cookieParser())
+app.use((req, res, next) => {
+  res.locals.loggedin = 0
+  res.locals.accountData = null
+  next()
+})
+
 
 app.use(utilities.checkJWTToken)
+
+
+
+
+
+
+
+
+
+
 /* ***********************
  * Routes
  *************************/
-app.use(require("./routes/static"));
+app.use(static);
 
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
