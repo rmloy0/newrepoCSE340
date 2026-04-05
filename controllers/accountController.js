@@ -215,6 +215,8 @@ async function updateAccount(req, res) {
     account_id
   );
 
+
+
  
   if (updateResult) {
     req.flash("notice", "Account was successfully updated.");
