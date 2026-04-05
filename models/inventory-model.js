@@ -74,6 +74,9 @@ async function checkExistingClassification(classification_name){
   }
 }
 
+/************
+ * add inventory function
+ */
 
 async function AddInventory(  inv_make, inv_model,inv_year,inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color,classification_id){
 

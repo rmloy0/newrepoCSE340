@@ -151,7 +151,9 @@ async function accountLogin(req, res) {
   }
 }
 
-
+/***********
+ * build account management
+ */
 
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav()
@@ -161,7 +163,149 @@ async function buildAccountManagement(req, res) {
   })
 }
 
+ /****************
+ * Build account 
+ */
 
-module.exports = { buildLogin, buildRegister, registerAccount, loginAccount, accountLogin, buildAccountManagement }
+
+async function buildUpdateAccount(req, res) {
+  let nav = await utilities.getNav()
+  
+const accountId = res.locals.accountData.account_id
+
+
+
+const account = await accountModel.getAccountById(accountId)
+
+ 
+if (!account) {
+    req.flash("notice", "Account not found.")
+    return res.redirect("/account/")
+  }
+
+ 
+  res.render("account/update-account", {
+    title: "Update Account",
+    nav,
+    account,
+    account_firstname: account.account_firstname,
+    account_lastname: account.account_lastname,
+    account_email: account.account_email,
+     errors: null,
+  })
+}
+ 
+/*********
+ * update acccount 
+ */
+
+async function updateAccount(req, res) {
+  const {
+    account_firstname,
+    account_lastname,
+    account_email
+  } = req.body;
+ 
+  const account_id = res.locals.accountData.account_id;
+
+  const updateResult = await accountModel.updateAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_id
+  );
+
+ 
+  if (updateResult) {
+    req.flash("notice", "Account was successfully updated.");
+    return res.redirect("/account/");
+  }
+
+ 
+  const nav = await utilities.getNav();
+
+  req.flash("notice", "Sorry, the update failed.");
+  return res.status(500).render("account/update-account", {
+    title: "Update Account",
+    nav,
+    errors: null,
+    account: {
+      account_firstname,
+      account_lastname,
+      account_email
+    }
+  });
+}
+
+
+/***************
+ * build update password view
+ * 
+ */
+
+
+async function buildUpdatePasswordview(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/update-password", {
+    title: "Update password",
+    nav,
+    errors: null
+  })
+}
+
+
+/***********
+ * update password
+ */
+
+
+
+async function updatePassword(req, res) {
+  const { account_password } = req.body;
+
+  
+  if (!account_password) {
+    req.flash("notice", "Password is required.");
+    return res.redirect("/account/update-password");
+  }
+
+ 
+  const hashedPassword = await bcrypt.hash(account_password, 10);
+
+ 
+  const account_id = res.locals.accountData.account_id;
+
+  const updateResult = await accountModel.updatePassword(
+    hashedPassword,
+    account_id
+  );
+ 
+  if (updateResult) {
+    req.flash("notice", "Password was successfully updated.");
+    return res.redirect("/account/");
+  }
+
+ 
+  const nav = await utilities.getNav();
+
+  req.flash("notice", "Sorry, the password update failed.");
+  return res.status(500).render("account/update-password", {
+    title: "Update Password",
+    nav,
+    errors: null
+  });
+}
+
+/****
+ * 
+ * Logout
+ */
+
+async function logout(req, res) { 
+   res.clearCookie("jwt");  
+   req.flash("notice", "You have been logged out.");  
+   return res.redirect("/");}
+
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount, accountLogin, buildAccountManagement, buildUpdateAccount,  updateAccount, buildUpdatePasswordview, updatePassword, logout }
 
  

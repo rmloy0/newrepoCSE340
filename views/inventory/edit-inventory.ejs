@@ -9,7 +9,7 @@
  </ul>
 <% } %>
 
-<h1>Edit Inventory</h1>
+
 
 <div class="form-view">
   <form action="/inv/update" method="post">
@@ -58,10 +58,8 @@
 
     <div class="button-container">
       <input type="submit" class="button-submit" value="Update Inventory">
-
-    <input type="hidden" name="inv_id">
-<% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
-<% } %>>
+ 
+ 
     </div>
   </form>
 </div>

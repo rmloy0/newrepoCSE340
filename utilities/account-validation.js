@@ -117,4 +117,116 @@ if (!req.body) {
   next();
 };
 
+/**************
+ * 
+ * 
+ */
+
+validate.updateRules = () => {
+  return [
+  
+    // firstname is required and must be string
+    body("account_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a first name."), // on error this message is sent.
+
+    // lastname is required and must be string
+    body("account_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide a last name."), // on error this message is sent.
+
+    // valid email is required and cannot already exist in the DB
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isEmail()
+      .normalizeEmail() // refer to validator.js docs
+      .withMessage("A valid email is required.")
+    ];
+};
+
+/********
+ * check info for update
+ */
+validate.checkUpdateData  = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+ 
+    const account = {
+      account_firstname: req.body.account_firstname,
+      account_lastname: req.body.account_lastname,
+      account_email: req.body.account_email
+    };
+
+    return res.render("account/update-account", {
+      title: "Update Account",
+      nav,
+      errors: errors.array(),
+      account
+    });
+  }
+
+  next();
+};
+
+
+/************
+ * update password rules 
+ */
+
+validate.updateRulesPassword = () => {
+  return [
+  
+// password is required and must be strong password
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Password does not meet requirements."),
+  ];
+};
+
+
+/***********
+ * update password check
+ */
+
+
+validate.checkUpdatePassword  = async (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+ 
+    const account = {
+      account_password: req.body.account_password,
+      
+    };
+
+    return res.render("account/update-password", {
+      title: "Update Account",
+      nav,
+      errors: errors.array(),
+      account
+    });
+  }
+
+  next();
+};
+
 module.exports = validate;

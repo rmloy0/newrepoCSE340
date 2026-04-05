@@ -40,5 +40,25 @@ router.post(
 router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 
 
+router.get("/update-account/",  utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount))
+
+
+
+
+router.post("/update-account/",  regValidate.updateRules(),
+  regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccount));
+
+
+router.get("/update-password/",  utilities.checkLogin, utilities.handleErrors(accountController.buildUpdatePasswordview))
+
+
+
+
+router.post("/update-password/",  regValidate.updateRulesPassword(),
+  regValidate.checkUpdatePassword, utilities.handleErrors(accountController.updatePassword));
+
+//Route for destroying cookie
+router.get("/logout", utilities.checkLogin, accountController.logout);
+
 
 module.exports = router;

@@ -348,3 +348,12 @@ input:required:invalid, input:focus:invalid {
 }
 
 
+.notice {
+  
+ 
+  color: rgb(181, 22, 22);
+   justify-content: center;
+ 
+
+}
+ 
