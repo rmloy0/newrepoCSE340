@@ -112,4 +112,6 @@ async function updatePassword(
     throw error
   }
 }
+
+
 module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountById,  updateAccount, updatePassword}

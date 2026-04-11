@@ -356,4 +356,87 @@ input:required:invalid, input:focus:invalid {
  
 
 }
+  
+.favoriteView ul {
+  display: flex;
+  flex-wrap: wrap;
+  
+
+  
+}
+
+
+.favoriteView li img {
+  width: 85%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  margin: 1rem 0;
+}
+
+
+.favoriteView li {
+  margin: 2rem;
+  background-color: #015d6f;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white;
+   font-weight: bold;
  
+  
+}
+
+
+.favoriteView textarea {
+  width: 100%;
+  min-height: 80px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+ 
+  font-size: large;
+  font-weight: bold;
+  font-family: "Roboto Slab", serif;
+
+}
+
+
+.favoriteView button {
+  margin-top: 0.5rem;
+  padding: 0.8rem ;
+  border-radius: 0.4rem;
+  background-color: #ffffff;
+  color: #015d6f;
+  border: none;
+  
+  font-weight: bold;
+}
+.addFavorite button {
+  margin: 0.5rem;
+  padding: 0.8rem ;
+  border-radius: 0.4rem;
+ 
+  color: #021a1f;
+  border: none;
+  
+  font-weight: bold;
+}
+
+
+.addFavorite {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+
+.addFavorite button:hover {
+  background-color: #027c91;
+}
+
+
+.addFavorite a {
+  color: #015d6f;
+  font-weight: bold;
+  text-decoration: none;
+}

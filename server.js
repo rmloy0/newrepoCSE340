@@ -18,6 +18,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const favoriteRoute = require("./routes/favoriteRoute");
 
 /* ***********************
  * vie Engine and Templates
@@ -73,8 +74,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 
 // account routes
-app.use("/account", require("./routes/accountRoute"));
-
+app.use("/account", accountRoute);
+app.use("/favorite", favoriteRoute);
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, we appear to have lost that page." });

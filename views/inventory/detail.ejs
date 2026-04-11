@@ -1,3 +1,17 @@
  <!-- layout to show car  details -->
 <%- detail %>
 
+ 
+
+
+ 
+<form class = "addFavorite" action="/favorite/<%= inv_id %>" method="POST">
+  <button type="submit">
+    <%= isFavorited ? "Remove Favorite" : "Add Favorite" %>
+  </button>
+  
+ <a href="/favorite/">Check out your favorite list</a><br>
+
+</form>
+
+

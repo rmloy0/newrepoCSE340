@@ -1,0 +1,34 @@
+
+<h1><%= title %></h1>
+
+
+<% if (message) { %>
+  <p class="error"><%= message %></p>
+<% } %>
+
+
+
+
+<div class = favoriteView>
+<% if (favorites.length === 0) { %>
+  <p>No favorites yet.</p>
+<% } else { %>
+  <ul>
+    <% favorites.forEach(fav => { %>
+      <li>
+       <strong><%= fav.inv_make %>  <%= fav.inv_model %> <%= fav.inv_year %></strong>
+       <img src= <%= fav.inv_image %> alt="Image of <%= fav.inv_make %> <%= fav.inv_model %>" class=vehicle-image>         
+         
+<form  action = /favorite/note/<%= fav.inv_id %> method="POST">
+  <label>Comment why this car is favorite</label><br>
+  <textarea name="note" rows="4"  maxlength="200" >
+<%= fav.note || "" %>
+</textarea>
+  <br>
+  <button type="submit">Save</button>
+</form>
+ 
+    <% }) %>
+  </ul>
+<% } %>
+</div>
